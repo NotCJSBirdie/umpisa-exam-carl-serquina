@@ -86,7 +86,7 @@ export default function InventoryPage() {
           <input
             type='text'
             placeholder='Search products...'
-            className='block w-full rounded-md border-gray-300 px-4 py-2 text-sm border focus:border-blue-500 focus:ring-blue-500 shadow-sm'
+            className='block w-full rounded-md border-gray-300 px-4 py-2 text-sm border focus:border-blue-500 focus:ring-blue-500 shadow-sm text-gray-900 placeholder:text-gray-500'
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
@@ -117,7 +117,7 @@ export default function InventoryPage() {
                 <input
                   type='text'
                   required
-                  className='mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm'
+                  className='mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm text-gray-900 placeholder:text-gray-500'
                   value={newItemForm.name}
                   onChange={(e) =>
                     setNewItemForm({ ...newItemForm, name: e.target.value })
@@ -133,7 +133,7 @@ export default function InventoryPage() {
                     type='number'
                     min='0'
                     required
-                    className='mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm'
+                    className='mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm text-gray-900 placeholder:text-gray-500'
                     value={newItemForm.stock}
                     onChange={(e) =>
                       setNewItemForm({ ...newItemForm, stock: Number(e.target.value) })
@@ -149,7 +149,7 @@ export default function InventoryPage() {
                     step='0.01'
                     min='0'
                     required
-                    className='mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm'
+                    className='mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm text-gray-900 placeholder:text-gray-500'
                     value={newItemForm.price}
                     onChange={(e) =>
                       setNewItemForm({ ...newItemForm, price: Number(e.target.value) })
