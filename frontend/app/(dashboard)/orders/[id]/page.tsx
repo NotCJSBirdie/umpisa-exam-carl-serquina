@@ -103,22 +103,26 @@ export default function OrderDetailsPage() {
               <div className='space-y-2 flex flex-col'>
                 <button
                   onClick={() => updateOrderStatus(order.id, 'Pending')}
-                  disabled={order.status === 'Pending'}
-                  className='w-full rounded-md border border-gray-300 px-4 py-2 text-sm font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 text-left'
+                  disabled={
+                    order.status === 'Pending' ||
+                    order.status === 'Processing' ||
+                    order.status === 'Shipped'
+                  }
+                  className='w-full rounded-md border border-gray-300 px-4 py-2 text-sm font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 text-left text-gray-900'
                 >
                   Set to Pending
                 </button>
                 <button
                   onClick={() => updateOrderStatus(order.id, 'Processing')}
-                  disabled={order.status === 'Processing'}
-                  className='w-full rounded-md border border-gray-300 px-4 py-2 text-sm font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 text-left'
+                  disabled={order.status === 'Processing' || order.status === 'Shipped'}
+                  className='w-full rounded-md border border-gray-300 px-4 py-2 text-sm font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 text-left text-gray-900'
                 >
                   Set to Processing
                 </button>
                 <button
                   onClick={() => updateOrderStatus(order.id, 'Shipped')}
                   disabled={order.status === 'Shipped'}
-                  className='w-full rounded-md border border-gray-300 bg-gray-900 px-4 py-2 text-sm font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-900 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-800 text-left'
+                  className='w-full rounded-md border border-gray-300 bg-gray-900 px-4 py-2 text-sm font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-900 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-800 text-left text-gray-900'
                 >
                   Mark as Shipped
                 </button>
