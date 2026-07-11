@@ -1,0 +1,43 @@
+# =========================
+# Node.js & Dependencies
+# =========================
+node_modules/
+npm-debug.log
+yarn-error.log
+.pnp
+.pnp.js
+
+# =========================
+# Next.js (Frontend)
+# =========================
+.next/
+out/
+build/
+.contentlayer/
+
+# =========================
+# Environment Variables
+# =========================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# =========================
+# Testing (Backend)
+# =========================
+coverage/
+
+# =========================
+# OS & Editor Files
+# =========================
+.DS_Store
+*.pem
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
