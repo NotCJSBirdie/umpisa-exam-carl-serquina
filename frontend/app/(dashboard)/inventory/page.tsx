@@ -9,7 +9,8 @@ export default function InventoryPage() {
     useApp()
   const [searchTerm, setSearchTerm] = useState('')
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [newItemForm, setNewItemForm] = useState({ name: '', stock: 0, price: 0 })
+
+  const [newItemForm, setNewItemForm] = useState({ name: '', stock: '', price: '' })
 
   const filteredInventory = inventory.filter((item) =>
     item.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -63,13 +64,16 @@ export default function InventoryPage() {
 
     addInventoryItem({
       name: newItemForm.name,
-      stock: Number(newItemForm.stock),
-      price: Number(newItemForm.price),
+      stock: Number(newItemForm.stock) || 0,
+      price: Number(newItemForm.price) || 0,
     })
 
-    setNewItemForm({ name: '', stock: 0, price: 0 })
+    setNewItemForm({ name: '', stock: '', price: '' })
     setIsModalOpen(false)
   }
+
+  const isFormValid =
+    newItemForm.name.trim() !== '' && newItemForm.stock !== '' && newItemForm.price !== ''
 
   return (
     <div className='space-y-6'>
@@ -86,7 +90,7 @@ export default function InventoryPage() {
           <input
             type='text'
             placeholder='Search products...'
-            className='block w-full rounded-md border-gray-300 px-4 py-2 text-sm border focus:border-blue-500 focus:ring-blue-500 shadow-sm text-gray-900 placeholder:text-gray-500'
+            className='block w-full rounded-md border-gray-300 bg-white px-4 py-2 text-sm text-gray-900 placeholder:text-gray-500 border focus:border-blue-500 focus:ring-blue-500 focus:outline-none shadow-sm'
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
@@ -117,7 +121,7 @@ export default function InventoryPage() {
                 <input
                   type='text'
                   required
-                  className='mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm text-gray-900 placeholder:text-gray-500'
+                  className='mt-1 block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-gray-900 placeholder:text-gray-500 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm'
                   value={newItemForm.name}
                   onChange={(e) =>
                     setNewItemForm({ ...newItemForm, name: e.target.value })
@@ -133,10 +137,10 @@ export default function InventoryPage() {
                     type='number'
                     min='0'
                     required
-                    className='mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm text-gray-900 placeholder:text-gray-500'
+                    className='mt-1 block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-gray-900 placeholder:text-gray-500 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm'
                     value={newItemForm.stock}
                     onChange={(e) =>
-                      setNewItemForm({ ...newItemForm, stock: Number(e.target.value) })
+                      setNewItemForm({ ...newItemForm, stock: e.target.value })
                     }
                   />
                 </div>
@@ -149,10 +153,10 @@ export default function InventoryPage() {
                     step='0.01'
                     min='0'
                     required
-                    className='mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm text-gray-900 placeholder:text-gray-500'
+                    className='mt-1 block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-gray-900 placeholder:text-gray-500 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm'
                     value={newItemForm.price}
                     onChange={(e) =>
-                      setNewItemForm({ ...newItemForm, price: Number(e.target.value) })
+                      setNewItemForm({ ...newItemForm, price: e.target.value })
                     }
                   />
                 </div>
@@ -165,9 +169,11 @@ export default function InventoryPage() {
                 >
                   Cancel
                 </button>
+                {/* FIX: Button is now disabled and styled appropriately until form is valid */}
                 <button
                   type='submit'
-                  className='rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700'
+                  disabled={!isFormValid}
+                  className='rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-blue-600'
                 >
                   Save Product
                 </button>
